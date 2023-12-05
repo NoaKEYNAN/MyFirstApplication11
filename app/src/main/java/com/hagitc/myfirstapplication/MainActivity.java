@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
             String mail = fuser.getCurrentUser().getEmail();
             String userId = fuser.getCurrentUser().getUid();
             Toast.makeText(this, userId, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent (MainActivity.this, GameActivity.class);
+            startActivity(intent);
         }
 
     }
@@ -63,5 +65,12 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
+
+
+
+
+
     }
+
+
 }
