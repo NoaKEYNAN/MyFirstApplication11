@@ -17,9 +17,11 @@ public class BoardGame extends View {
         super(context);
         this.context = context;
         squares = new Square [6][7];
+        misgeret = new Paint();
         misgeret.setStyle(Paint.Style.STROKE);
         misgeret.setColor(Color.BLACK);
         misgeret.setStrokeWidth(10);
+        fill = new Paint();
         fill.setColor(Color.WHITE);
     }
     protected void onDraw(Canvas canvas)

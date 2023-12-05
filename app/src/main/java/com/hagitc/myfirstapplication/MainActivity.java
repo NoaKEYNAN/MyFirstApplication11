@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
                         if(task.isSuccessful() == true)
                         {
                             Toast.makeText(MainActivity.this, "Register success", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(MainActivity.this, HomePage.class);
-                            //להוסיף START ACTIVITY
+                            Intent intent = new Intent(MainActivity.this, GameActivity.class);
+                            startActivity(intent);
                         }
                         else
                         {
