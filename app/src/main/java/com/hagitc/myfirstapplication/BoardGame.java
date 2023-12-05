@@ -35,6 +35,7 @@ public class BoardGame extends View {
         int y = 0;
         int h = canvas.getWidth();
         int w = canvas.getWidth();
+        //להציג את המערך הדו מימדי של המשבצות
         int color;
 
     }
