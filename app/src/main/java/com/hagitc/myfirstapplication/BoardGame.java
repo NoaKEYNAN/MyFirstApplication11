@@ -33,12 +33,12 @@ public class BoardGame extends View {
     {
         int x = 0;
         int y = 0;
-        int w = canvas.getWidth();
-        int h = canvas.getHeight();
+        int w = canvas.getWidth()/7;
+        int h = canvas.getWidth()/6;
 
-        for(int i=0; i<h; i++)
+        for(int i=0; i<squares.length; i++)
         {
-            for(int j=0;j<w; j++)
+            for(int j=0;j<squares[0].length; j++)
             {
                 misgeret = new Paint();
                 misgeret.setStyle(Paint.Style.STROKE);
