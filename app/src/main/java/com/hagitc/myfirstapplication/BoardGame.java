@@ -27,17 +27,30 @@ public class BoardGame extends View {
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
-        drawBoard(canvas);
+        drawBoard(canvas);//מצייר לוח ריק
     }
     public void drawBoard(Canvas canvas)
     {
         int x = 0;
         int y = 0;
-        int h = canvas.getWidth();
         int w = canvas.getWidth();
-        //להציג את המערך הדו מימדי של המשבצות
-        int color;
+        int h = canvas.getHeight();
 
+        for(int i=0; i<h; i++)
+        {
+            for(int j=0;j<w; j++)
+            {
+                misgeret = new Paint();
+                misgeret.setStyle(Paint.Style.STROKE);
+                misgeret.setColor(Color.BLACK);
+                misgeret.setStrokeWidth(10);
+                squares[i][j] = new Square(this,x,y,w,h,  misgeret);
+                squares[i][j].draw(canvas);
+                x = x + w;
+            }
+            y = y + h;
+            x = 0;
+        }
     }
 
 

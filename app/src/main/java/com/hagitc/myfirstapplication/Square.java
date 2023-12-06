@@ -8,13 +8,13 @@ public class Square  {
     BoardGame boardGame;
     float x, y, w, h;
     private Paint p;
-    public Square (BoardGame boardGame, float x, float y, float w, float h)
+    public Square (BoardGame boardGame, float x, float y, float w, float h,Paint p)
     {
         this.boardGame = boardGame;
         this.x = x;
         this.y = y;
         this.boardGame = boardGame;
-        p = new Paint();
+        this.p = p;
         this.w = w;
         this.h = h;
     }
