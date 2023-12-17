@@ -4,7 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-public class Square  {
+public class Square
+{
     BoardGame boardGame;
     float x, y, w, h;
     private Paint p;
@@ -18,10 +19,19 @@ public class Square  {
         this.w = w;
         this.h = h;
     }
+
+    public void changeColor(int c)
+    {
+        p.setColor(c);
+
+    }
+
+
     public void draw (Canvas canvas)
     {
         canvas.drawRect(x,y, x+w, y+h, p);
     }
+
 
 
 
