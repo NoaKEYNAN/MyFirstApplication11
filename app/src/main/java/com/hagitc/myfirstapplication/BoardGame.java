@@ -66,23 +66,18 @@ public class BoardGame extends View {
         int touchedColumn = (int) (x/ (getWidth() / 7));
         System.out.println("TOUCHED SQUARE: [" + touchedRow + "][" + touchedColumn + "]");
         invalidate();
-        boolean result = g.userClick(touchedColumn);
-        if (result == true)
+        int row = g.userClick(touchedColumn);
+        if (row != (-1))
         {
             if (g.getCurrentPlayer() == 1)
             {
-
-                misgeret = new Paint();
-                misgeret.setStyle(Paint.Style.STROKE);
-                misgeret.setColor(Color.BLACK);
-                misgeret.setStrokeWidth(10);
-                squares[i][j] = new Square(this,x,y,w,h,  misgeret);
-                squares[i][j].draw(canvas);
-                squares[touchedRow][touchedColumn].setColor(Color.RED);
+                squares[row][touchedColumn].changeColor(color.RED);
+                invalidate();
             }
             else
             {
-                squares[touchedRow][touchedColumn].setColor(Color.YELLOW);
+                squares[touchedRow][touchedColumn].changeColor(color.YELLOW);
+                invalidate();
             }
         }
         return true;

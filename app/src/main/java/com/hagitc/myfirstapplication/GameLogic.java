@@ -4,7 +4,8 @@ public class GameLogic {
     private int arr [][] = new int [6][7];
     private int currentPlayer;
 
-    public int getCurrentPlayer() {
+    public int getCurrentPlayer()
+    {
         return currentPlayer;
     }
 
@@ -24,21 +25,102 @@ public class GameLogic {
         this.currentPlayer= this.currentPlayer * (-1);
     }
 
-    public boolean userClick(int touchedColumn)
+    public int userClick(int touchedColumn)
     {
+        //אני מקבלת כפרמטר את המספר העמודה שהמשתמש לחץ עליה.
+        //אם העמודה לא מלאה, הפעולה תחזיר את המשבצת הראשונה שאפשר לצבוע אותה.
+        //אם העמודה מלאה הפעולה תחזיר מינוס אחת.
+        int touchedRow = -1;
         boolean found = false;
-        switchPlayer();
         for(int i=6; i>=0 &&!found;i--)
         {
             if(arr[i][touchedColumn] == 0)
             {
                 arr[i][touchedColumn] = currentPlayer;
                 found = true;
+                touchedRow = i;
             }
         }
-        if (!found)
+        if (found)
         {
-            switchPlayer();
+            return touchedRow;
         }
+        return touchedRow;
+
+    }
+
+    public boolean checkForWin() {
+        // Check for a win in rows, columns, and diagonals
+        return checkRows() || checkColumns() || checkDiagonals();
+    }
+
+    private boolean checkRows() {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7 - 3; j++) {
+                if (arr[i][j] != 0 &&
+                        arr[i][j] == arr[i][j + 1] &&
+                        arr[i][j] == arr[i][j + 2] &&
+                        arr[i][j] == arr[i][j + 3]) {
+                    return true; // Win in a row
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean checkColumns() {
+        for (int i = 0; i < 6 - 3; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (arr[i][j] != 0 &&
+                        arr[i][j] == arr[i + 1][j] &&
+                        arr[i][j] == arr[i + 2][j] &&
+                        arr[i][j] == arr[i + 3][j]) {
+                    return true; // Win in a column
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean checkDiagonals() {
+        for (int i = 0; i < 6 - 3; i++) {
+            for (int j = 0; j < 7 - 3; j++) {
+                if (arr[i][j] != 0 &&
+                        arr[i][j] == arr[i + 1][j + 1] &&
+                        arr[i][j] == arr[i + 2][j + 2] &&
+                        arr[i][j] == arr[i + 3][j + 3]) {
+                    return true; // Win in a diagonal
+                }
+            }
+        }
+
+        for (int i = 0; i < 6 - 3; i++) {
+            for (int j = 3; j < 7; j++) {
+                if (arr[i][j] != 0 &&
+                        arr[i][j] == arr[i + 1][j - 1] &&
+                        arr[i][j] == arr[i + 2][j - 2] &&
+                        arr[i][j] == arr[i + 3][j - 3]) {
+                    return true; // Win in the other diagonal
+                }
+            }
+        }
+
+        return false;
+    }
+
+
+    public boolean isBoardFull()
+    {
+        for(int i = 0; i< 6; i++)
+        {
+            for(int j = 0; j< 7; j++)
+            {
+                if (arr[i][j] == 0)
+                {
+                    return false; //board is not full
+                }
+            }
+        }
+        return true; //board is full
     }
 }
