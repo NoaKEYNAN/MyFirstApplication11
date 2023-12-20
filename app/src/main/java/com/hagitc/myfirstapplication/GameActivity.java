@@ -11,5 +11,12 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         boardGame = new BoardGame(this);
         setContentView(boardGame);
+
+
+        GameLogic evar1 = new GameLogic(); //יצרתי עצם מטיפוס המחלקה GameLogic
+
+
+
+        //
     }
 }

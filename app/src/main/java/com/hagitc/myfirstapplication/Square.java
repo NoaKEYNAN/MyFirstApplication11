@@ -15,7 +15,11 @@ public class Square
         this.x = x;
         this.y = y;
         this.boardGame = boardGame;
+      //  int color = Color.WHITE;
+        //if(this.p!=null)
+          //  color = this.p.getColor();
         this.p = p;
+     //   this.p.setColor(color);
         this.w = w;
         this.h = h;
     }

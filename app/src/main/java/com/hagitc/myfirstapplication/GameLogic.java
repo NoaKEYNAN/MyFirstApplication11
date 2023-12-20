@@ -1,8 +1,10 @@
 package com.hagitc.myfirstapplication;
 
-public class GameLogic {
+public class GameLogic
+{
     private int arr [][] = new int [6][7];
     private int currentPlayer;
+    private int counter;
 
     public int getCurrentPlayer()
     {
@@ -18,6 +20,11 @@ public class GameLogic {
             }
         }
         this.currentPlayer = 1;
+        this.counter = 0;
+    }
+    public int getCounter()
+    {
+        return this.counter;
     }
 
     public void switchPlayer ()
@@ -32,7 +39,7 @@ public class GameLogic {
         //אם העמודה מלאה הפעולה תחזיר מינוס אחת.
         int touchedRow = -1;
         boolean found = false;
-        for(int i=6; i>=0 &&!found;i--)
+        for(int i=arr.length-1; i>=0 &&!found;i--)
         {
             if(arr[i][touchedColumn] == 0)
             {
@@ -49,7 +56,8 @@ public class GameLogic {
 
     }
 
-    public boolean checkForWin() {
+    public boolean checkForWin()
+    {
         // Check for a win in rows, columns, and diagonals
         return checkRows() || checkColumns() || checkDiagonals();
     }

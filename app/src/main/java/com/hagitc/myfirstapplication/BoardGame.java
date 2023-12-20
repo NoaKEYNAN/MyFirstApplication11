@@ -4,15 +4,19 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.icu.text.RelativeDateTimeFormatter;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class BoardGame extends View {
+public class BoardGame extends View
+{
     Square [][] squares;
     Context context;
     Paint misgeret;
     Paint fill;
     GameLogic g = new GameLogic();
+    MyCircle circle1;
+    MyCircle circle2;
 
 
 
@@ -28,6 +32,11 @@ public class BoardGame extends View {
         fill = new Paint();
         fill.setColor(Color.WHITE);
     }
+    public void SetFill(int color)
+    {
+        fill.setColor(color);
+    }
+
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
@@ -49,6 +58,8 @@ public class BoardGame extends View {
                 misgeret.setStyle(Paint.Style.STROKE);
                 misgeret.setColor(Color.BLACK);
                 misgeret.setStrokeWidth(10);
+
+
                 squares[i][j] = new Square(this,x,y,w,h,  misgeret);
                 squares[i][j].draw(canvas);
                 x = x + w;
@@ -58,29 +69,29 @@ public class BoardGame extends View {
         }
     }
 
-    public boolean onTouchEvent(MotionEvent event)
-    {
-        float x = event.getX();
-        float y = event.getY();
-        int touchedRow = (int)(y/ (getHeight() / 6));
-        int touchedColumn = (int) (x/ (getWidth() / 7));
-        System.out.println("TOUCHED SQUARE: [" + touchedRow + "][" + touchedColumn + "]");
-        invalidate();
-        int row = g.userClick(touchedColumn);
-        if (row != (-1))
-        {
-            if (g.getCurrentPlayer() == 1)
-            {
-                squares[row][touchedColumn].changeColor(color.RED);
-                invalidate();
-            }
-            else
-            {
-                squares[touchedRow][touchedColumn].changeColor(color.YELLOW);
-                invalidate();
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            float x = event.getX();
+            float y = event.getY();
+            int touchedRow = (int) (y / (getHeight() / 6));
+            int touchedColumn = (int) (x / (getWidth() / 7));
+            System.out.println("TOUCHED SQUARE: [" + touchedRow + "][" + touchedColumn + "]");
+            int row = g.userClick(touchedColumn);
+            if (row != (-1)) {
+                if (g.getCurrentPlayer() == 1) {
+
+                    circle1 = new MyCircle(touchedRow, touchedColumn, 20, 65536);
+                    invalidate();
+                }
+                else
+                {
+                    circle2 = new MyCircle(touchedRow, touchedColumn, 20, 256);
+                    invalidate();
+                }
             }
         }
         return true;
+
     }
 
 }
