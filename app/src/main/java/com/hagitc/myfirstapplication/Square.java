@@ -9,6 +9,8 @@ public class Square
     BoardGame boardGame;
     float x, y, w, h;
     private Paint p;
+    private boolean isOccupied=false;
+    private int circleColor=Color.WHITE;
     public Square (BoardGame boardGame, float x, float y, float w, float h,Paint p)
     {
         this.boardGame = boardGame;
@@ -24,6 +26,12 @@ public class Square
         this.h = h;
     }
 
+    public void placeCircle(int circleColor)
+    {
+        isOccupied=true;
+        this.circleColor =circleColor;
+    }
+
     public void changeColor(int c)
     {
         p.setColor(c);
@@ -34,6 +42,12 @@ public class Square
     public void draw (Canvas canvas)
     {
         canvas.drawRect(x,y, x+w, y+h, p);
+
+        if(isOccupied) {
+            Paint paint = new Paint();
+            paint.setColor(circleColor);
+            canvas.drawCircle(x+w/2,y+h/2,w/2,paint);
+        }
     }
 
 

@@ -13,7 +13,6 @@ public class GameActivity extends AppCompatActivity {
         setContentView(boardGame);
 
 
-        GameLogic evar1 = new GameLogic(); //יצרתי עצם מטיפוס המחלקה GameLogic
 
 
 

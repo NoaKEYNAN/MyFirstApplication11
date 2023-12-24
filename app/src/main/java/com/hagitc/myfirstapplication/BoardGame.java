@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.icu.text.RelativeDateTimeFormatter;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 public class BoardGame extends View
 {
@@ -60,7 +61,10 @@ public class BoardGame extends View
                 misgeret.setStrokeWidth(10);
 
 
-                squares[i][j] = new Square(this,x,y,w,h,  misgeret);
+                // first tine only create new square
+                // after - we use the created ones, no need for new ones
+                if(squares[i][j]==null)
+                    squares[i][j] = new Square(this,x,y,w,h,  misgeret);
                 squares[i][j].draw(canvas);
                 x = x + w;
             }
@@ -79,16 +83,44 @@ public class BoardGame extends View
             int row = g.userClick(touchedColumn);
             if (row != (-1)) {
                 if (g.getCurrentPlayer() == 1) {
-
-                    circle1 = new MyCircle(touchedRow, touchedColumn, 20, 65536);
-                    invalidate();
+                    squares[row][touchedColumn].placeCircle(Color.RED);
+                    invalidate();//
+                    g.setCounter(g.getCounter()+1);
                 }
                 else
                 {
-                    circle2 = new MyCircle(touchedRow, touchedColumn, 20, 256);
+                    squares[row][touchedColumn].placeCircle(Color.YELLOW);
                     invalidate();
+                    g.setCounter(g.getCounter()+1);
                 }
             }
+            if (g.getCounter() >= 4 && g.getCounter()<=42)
+            {
+                boolean result = g.checkForWin();
+                if(result == true)
+                {
+                    int currentplayer1 = 0;
+                    if (g.getCurrentPlayer() == 1)
+                    {
+                        currentplayer1 = 1;
+                    }
+                    else
+                    {
+                        currentplayer1 = 2;
+                    }
+                    Toast.makeText(this.context, "PLAYER" + currentplayer1 + " WON!" , Toast.LENGTH_LONG).show();
+
+                    return true;
+                }
+
+            }
+            if(g.isBoardFull()==true)
+            {
+                Toast.makeText(this.context, "IT IS A TEKO" , Toast.LENGTH_LONG).show();
+                //print a message that the game is end in "teko".
+                return true;
+            }
+
         }
         return true;
 
