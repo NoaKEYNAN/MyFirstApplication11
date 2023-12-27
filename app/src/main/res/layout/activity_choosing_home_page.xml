@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BC9292"
+    android:backgroundTint="#033233"
+    tools:context=".ChoosingHomePage">
+
+    <Button
+        android:id="@+id/button4"
+        android:onClick="onClick"
+        android:layout_width="222dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="170dp"
+        android:text="ONLINE"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="216dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginBottom="211dp"
+        android:text="FROM ONE PHONE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

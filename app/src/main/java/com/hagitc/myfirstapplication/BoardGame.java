@@ -33,6 +33,10 @@ public class BoardGame extends View
         fill = new Paint();
         fill.setColor(Color.WHITE);
     }
+    public GameLogic getGameLogic()
+    {
+        return g;
+    }
     public void SetFill(int color)
     {
         fill.setColor(color);
@@ -77,9 +81,9 @@ public class BoardGame extends View
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             float x = event.getX();
             float y = event.getY();
-            int touchedRow = (int) (y / (getHeight() / 6));
+       //     int touchedRow = (int) (y / (getHeight() / 6));
             int touchedColumn = (int) (x / (getWidth() / 7));
-            System.out.println("TOUCHED SQUARE: [" + touchedRow + "][" + touchedColumn + "]");
+           // System.out.println("TOUCHED SQUARE: [" + touchedRow + "][" + touchedColumn + "]");
             int row = g.userClick(touchedColumn);
             if (row != (-1)) {
                 if (g.getCurrentPlayer() == 1) {
@@ -110,6 +114,7 @@ public class BoardGame extends View
                     }
                     Toast.makeText(this.context, "PLAYER" + currentplayer1 + " WON!" , Toast.LENGTH_LONG).show();
 
+
                     return true;
                 }
 
@@ -125,5 +130,19 @@ public class BoardGame extends View
         return true;
 
     }
+
+
+    public void updateBoard(int row,int col,int color)
+    {
+        squares[row][col].placeCircle(color);
+        invalidate();
+    }
+
+    public void displayMessage(String message)
+    {
+
+    }
+
+
 
 }
