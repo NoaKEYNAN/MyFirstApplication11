@@ -16,9 +16,11 @@ public class BoardGame extends View
     Paint misgeret;
     Paint fill;
     GameLogic g = new GameLogic();
+
     MyCircle circle1;
     MyCircle circle2;
 
+    GamePresenter presenter;
 
 
     public BoardGame(Context context)
@@ -32,6 +34,8 @@ public class BoardGame extends View
         misgeret.setStrokeWidth(10);
         fill = new Paint();
         fill.setColor(Color.WHITE);
+
+        presenter = new GamePresenter(this,g);
     }
     public GameLogic getGameLogic()
     {
@@ -78,15 +82,23 @@ public class BoardGame extends View
     }
 
     public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN)
+        {
             float x = event.getX();
             float y = event.getY();
-       //     int touchedRow = (int) (y / (getHeight() / 6));
+            //     int touchedRow = (int) (y / (getHeight() / 6));
             int touchedColumn = (int) (x / (getWidth() / 7));
-           // System.out.println("TOUCHED SQUARE: [" + touchedRow + "][" + touchedColumn + "]");
+
+
+            // System.out.println("TOUCHED SQUARE: [" + touchedRow + "][" + touchedColumn + "]");
+
+            presenter.userClick(touchedColumn);
+            /*
             int row = g.userClick(touchedColumn);
-            if (row != (-1)) {
-                if (g.getCurrentPlayer() == 1) {
+            if (row != (-1))
+            {
+                if (g.getCurrentPlayer() == 1)
+                {
                     squares[row][touchedColumn].placeCircle(Color.RED);
                     invalidate();//
                     g.setCounter(g.getCounter()+1);
@@ -115,6 +127,8 @@ public class BoardGame extends View
                     Toast.makeText(this.context, "PLAYER" + currentplayer1 + " WON!" , Toast.LENGTH_LONG).show();
 
 
+
+
                     return true;
                 }
 
@@ -127,8 +141,12 @@ public class BoardGame extends View
             }
 
         }
-        return true;
 
+             */
+            return true;
+
+        }
+        return true;
     }
 
 
@@ -140,6 +158,8 @@ public class BoardGame extends View
 
     public void displayMessage(String message)
     {
+
+
 
     }
 

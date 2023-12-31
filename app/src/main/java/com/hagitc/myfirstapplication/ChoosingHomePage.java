@@ -15,6 +15,6 @@ public class ChoosingHomePage extends AppCompatActivity {
 
     public void onClick(View view)
     {
-        Intent intent = new Intent
+      //  Intent intent = new Intent
     }
 }
