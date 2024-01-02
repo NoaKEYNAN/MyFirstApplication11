@@ -81,17 +81,14 @@ public class BoardGame extends View
         }
     }
 
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(MotionEvent event)
+    {
         if (event.getAction() == MotionEvent.ACTION_DOWN)
         {
             float x = event.getX();
             float y = event.getY();
             //     int touchedRow = (int) (y / (getHeight() / 6));
             int touchedColumn = (int) (x / (getWidth() / 7));
-
-
-            // System.out.println("TOUCHED SQUARE: [" + touchedRow + "][" + touchedColumn + "]");
-
             presenter.userClick(touchedColumn);
             /*
             int row = g.userClick(touchedColumn);
@@ -158,11 +155,7 @@ public class BoardGame extends View
 
     public void displayMessage(String message)
     {
-
-
-
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
-
-
 
 }
