@@ -68,8 +68,7 @@ public class BoardGame extends View
                 misgeret.setColor(Color.BLACK);
                 misgeret.setStrokeWidth(10);
 
-
-                // first tine only create new square
+                // first time only create new square
                 // after - we use the created ones, no need for new ones
                 if(squares[i][j]==null)
                     squares[i][j] = new Square(this,x,y,w,h,  misgeret);
