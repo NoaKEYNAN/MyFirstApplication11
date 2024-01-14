@@ -2,6 +2,7 @@ package com.hagitc.myfirstapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -40,7 +41,6 @@ public class UserActivity extends AppCompatActivity {
         }
 
     }
-
     private void addUsertoFirestote(User user)
     {
         FirebaseFirestore fb = FirebaseFirestore.getInstance();
@@ -58,6 +58,9 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(UserActivity.this, "SET SUCCESS", Toast.LENGTH_LONG);
+                Intent intent = new Intent(UserActivity.this, BoardGame.class);
+                startActivity(intent);
+
             }
         });
 

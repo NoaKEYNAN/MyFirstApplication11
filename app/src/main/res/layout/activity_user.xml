@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#8CB3AF"
     tools:context=".UserActivity">
 
     <EditText
@@ -11,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="108dp"
-        android:layout_marginBottom="644dp"
+        android:layout_marginBottom="592dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="text"
@@ -23,13 +24,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="101dp"
         android:ems="10"
         android:inputType="number"
+        android:hint="Born Year"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="166dp"
+        app:layout_constraintTop_toBottomOf="@+id/etUserName"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -38,12 +41,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="164dp"
         android:layout_marginEnd="157dp"
-        android:layout_marginBottom="400dp"
-        android:text="Add Profile"
+        android:layout_marginBottom="352dp"
         android:onClick="addProfile"
+        android:text="Add Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.633"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

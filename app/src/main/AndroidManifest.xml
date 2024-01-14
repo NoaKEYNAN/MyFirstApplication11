@@ -19,9 +19,6 @@
             android:name=".ChoosingHomePage"
             android:exported="false" />
         <activity
-            android:name=".OnlineorComputer"
-            android:exported="false" />
-        <activity
             android:name=".GameActivity"
             android:exported="false" />
         <activity

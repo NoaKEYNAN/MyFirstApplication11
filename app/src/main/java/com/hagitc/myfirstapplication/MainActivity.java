@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                         if(task.isSuccessful() == true)
                         {
                             Toast.makeText(MainActivity.this, "Register success", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(MainActivity.this, GameActivity.class);
+                            Intent intent = new Intent(MainActivity.this, UserActivity.class);
                             startActivity(intent);
                         }
                         else
