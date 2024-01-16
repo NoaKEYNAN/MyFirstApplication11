@@ -58,7 +58,7 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(UserActivity.this, "SET SUCCESS", Toast.LENGTH_LONG);
-                Intent intent = new Intent(UserActivity.this, BoardGame.class);
+                Intent intent = new Intent(UserActivity.this, GameActivity.class);
                 startActivity(intent);
 
             }

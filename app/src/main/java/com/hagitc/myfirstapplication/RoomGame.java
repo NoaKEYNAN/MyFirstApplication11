@@ -8,6 +8,7 @@ public class RoomGame
     private int currentPlayer;
     private int touchedColumn;
 
+
     public RoomGame() {
     }
 
@@ -18,7 +19,10 @@ public class RoomGame
         this.namePlayer2 = namePlayer2;
         this.currentPlayer= currentPlayer;
         this.touchedColumn = touchedColumn;
+
     }
+
+
 
     public String getStatus() {
         return status;
