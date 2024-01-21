@@ -2,7 +2,7 @@ package com.hagitc.myfirstapplication;
 
 public class RoomGame
 {
-    private String status;
+    private String status;//התחלתי משחק,הצטרפתי...
     private String namePlayer1;
     private String namePlayer2;
     private int currentPlayer;
