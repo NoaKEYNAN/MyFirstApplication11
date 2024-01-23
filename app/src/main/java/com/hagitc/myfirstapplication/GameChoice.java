@@ -21,15 +21,15 @@ public class GameChoice extends AppCompatActivity {
     LinearLayout linearLayout;
     BoardGame boardGame;
 
+    User creator;
+
+    private String gameId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_choice);
-        RoomGame roomgame = new RoomGame();
-        roomgame.setStatus("CREATED");
-        addRoomToFB(roomgame);
 
     }
     private void addRoomToFB(RoomGame roomGame)
@@ -42,7 +42,8 @@ public class GameChoice extends AppCompatActivity {
             {
                 TextView codeTextView = findViewById(R.id.codeTextView);
                 ImageView shareImage = findViewById(R.id.shareicon);
-                codeTextView.setText("Your game code is: " + documentReference.getId() + " .Share it with your friends!!!");
+                gameId = documentReference.getId();
+                codeTextView.setText("Your game code is: " + gameId + " .Share it with your friends!!!");
                 codeTextView.setVisibility(View.VISIBLE);
                 shareImage.setVisibility(View.VISIBLE);
 
@@ -63,7 +64,31 @@ public class GameChoice extends AppCompatActivity {
 
     }
 
+    /*
+            RoomGame roomgame = new RoomGame();
+        roomgame.setStatus("CREATED");
+        addRoomToFB(roomgame);
 
-    public void shareWithFriends(View view) {
+     */
+
+
+    public void shareWithFriends(View view)
+    {
+       // implicit intent - אינטרנט מרומז
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        //this action indicates that you want to send data.
+        shareIntent.setType("text/plain"); // for sharing text
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "Hello! THIS IS THE CODE FOR" + creator.getName() + "'S GAME." + creator.getName() + "S INVITING YOU TO JOIN!");
+        startActivity(Intent.createChooser(shareIntent, "Share using"));
+
+
+
+    }
+
+    public void onclickCreateGame(View view) {
+        RoomGame roomgame = new RoomGame();
+        roomgame.setStatus("CREATED");
+        addRoomToFB(roomgame);
+        shareWithFriends(view);
     }
 }

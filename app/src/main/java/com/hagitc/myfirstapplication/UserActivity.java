@@ -14,7 +14,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class UserActivity extends AppCompatActivity {
+public class UserActivity extends AppCompatActivity
+{
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
@@ -56,10 +57,12 @@ public class UserActivity extends AppCompatActivity {
 
         ref.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
-            public void onSuccess(Void unused) {
+            public void onSuccess(Void unused)
+            {
                 Toast.makeText(UserActivity.this, "SET SUCCESS", Toast.LENGTH_LONG);
-                Intent intent = new Intent(UserActivity.this, GameActivity.class);
+                Intent intent = new Intent(UserActivity.this, GameChoice.class);
                 startActivity(intent);
+
 
             }
         });
