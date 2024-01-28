@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,8 +22,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class GameChoice extends AppCompatActivity {
     LinearLayout linearLayout;
     BoardGame boardGame;
+    private RoomGame roomGame;
 
-    User creator;
+    //User creator = new User();
 
     private String gameId = "";
 
@@ -32,7 +35,7 @@ public class GameChoice extends AppCompatActivity {
         setContentView(R.layout.activity_game_choice);
 
     }
-    private void addRoomToFB(RoomGame roomGame)
+    private void addRoomToFB()
     {
         FirebaseFirestore fb = FirebaseFirestore.getInstance();
         fb.collection("GameRooms").add(roomGame).addOnSuccessListener(new OnSuccessListener<DocumentReference>()
@@ -43,11 +46,14 @@ public class GameChoice extends AppCompatActivity {
                 TextView codeTextView = findViewById(R.id.codeTextView);
                 ImageView shareImage = findViewById(R.id.shareicon);
                 gameId = documentReference.getId();
+                //codeTextView.setText("Hello! THIS IS THE CODE FOR" + creator.getName() + "'S GAME." + creator.getName() + "IS INVITING YOU TO JOIN! THE CODE IS: " + gameId);
                 codeTextView.setText("Your game code is: " + gameId + " .Share it with your friends!!!");
                 codeTextView.setVisibility(View.VISIBLE);
                 shareImage.setVisibility(View.VISIBLE);
 
                 Log.d("ONSUCCESS", "id:" + documentReference.getId());
+             //   shareWithFriends(gameId);
+
 
 
             }
@@ -71,24 +77,40 @@ public class GameChoice extends AppCompatActivity {
 
      */
 
-
     public void shareWithFriends(View view)
     {
        // implicit intent - אינטרנט מרומז
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         //this action indicates that you want to send data.
         shareIntent.setType("text/plain"); // for sharing text
-        shareIntent.putExtra(Intent.EXTRA_TEXT, "Hello! THIS IS THE CODE FOR" + creator.getName() + "'S GAME." + creator.getName() + "S INVITING YOU TO JOIN!");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "Hello! THIS IS THE CODE FOR THE GAME: " + gameId + " JOIN THE GAME! THE CREATOR IS WAITING FOR YOU!");
         startActivity(Intent.createChooser(shareIntent, "Share using"));
 
 
 
     }
 
-    public void onclickCreateGame(View view) {
-        RoomGame roomgame = new RoomGame();
-        roomgame.setStatus("CREATED");
-        addRoomToFB(roomgame);
-        shareWithFriends(view);
+    public void onclickCreateGame(View view)
+    {
+        roomGame = new RoomGame();
+        roomGame.setStatus("CREATED");
+        addRoomToFB();
+
+    }
+
+    public void practicefunction(View view)
+    {
+        Intent intent = new Intent(GameChoice.this, GameActivity.class);
+        startActivity(intent);
+    }
+
+    public void joinGame(View view)
+    {
+        //I need do check in FB if the code exists
+        EditText enterCodeText = findViewById(R.id.entercodeET);
+        Button clickToJoin = findViewById(R.id.joinroomgameB);
+        enterCodeText.setVisibility(View.VISIBLE);
+        clickToJoin.setVisibility(View.VISIBLE);
+
     }
 }

@@ -62,6 +62,7 @@ public class GamePresenter
                     currentplayer1 = 2;
                 }
                 boardGame.displayMessage("PLAYER" + currentplayer1 + " WON!");
+
                 //TO ADD A BUTTON THAT RESTART THE GAME
                 if (gameLogic.isBoardFull() == true)
                 {
@@ -78,4 +79,6 @@ public class GamePresenter
             }
         }
     }
+
+
 }

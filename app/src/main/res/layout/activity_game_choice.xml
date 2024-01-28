@@ -13,8 +13,10 @@
         android:layout_height="121dp"
         android:layout_marginStart="108dp"
         android:layout_marginTop="136dp"
-        android:text="CREATE GAME"
+        android:layout_marginEnd="114dp"
         android:onClick="onclickCreateGame"
+        android:text="CREATE GAME"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,10 +24,15 @@
         android:id="@+id/joinB"
         android:layout_width="183dp"
         android:layout_height="115dp"
+        android:layout_marginStart="115dp"
         android:layout_marginTop="35dp"
         android:layout_marginEnd="114dp"
+        android:layout_marginBottom="41dp"
         android:text="JOIN GAME"
+        android:onClick="joinGame"
+        app:layout_constraintBottom_toTopOf="@+id/practiceB"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/creatB" />
 
     <Button
@@ -33,22 +40,24 @@
         android:layout_width="190dp"
         android:layout_height="107dp"
         android:layout_marginStart="108dp"
+        android:layout_marginEnd="113dp"
         android:layout_marginBottom="176dp"
         android:text="PRACTICE"
+        android:onClick="practicefunction"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/codeTextView"
-        android:layout_width="139dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="132dp"
+        android:layout_width="173dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="98dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="140dp"
         android:text="TextView"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,4 +72,30 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/entercodeET"
+        android:layout_width="178dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="69dp"
+        android:layout_marginBottom="56dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="ENTER THE CODE"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/joinroomgameB"
+        android:layout_width="134dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="66dp"
+        android:background="#DBDFB0"
+        android:backgroundTint="#CBD195"
+        android:text="CLICK TO JOIN"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
